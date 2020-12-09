@@ -264,7 +264,7 @@ struct StackNode {
       std::ostream& os, StackNode const* parent, double tree_time) const {
     static bool add_comma = false;
     auto percent = (total_runtime / tree_time) * 100.0;
-    if (percent < 0.1) return;
+    if (percent < 0.01) return;
     if (!name.empty()) {
       if (add_comma) os << ",\n";
       add_comma = true;
@@ -612,9 +612,8 @@ struct State {
       if (rank == 0)
 #endif
       {
-        std::ofstream fout("noname.json");
+        std::ofstream fout("spacetime.json");
         stack_root.print_json(fout);
-        return;
       }
     }
 
