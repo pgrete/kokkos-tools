@@ -611,9 +611,11 @@ struct State {
       MPI_Comm_rank(MPI_COMM_WORLD, &rank);
       if (rank == 0)
 #endif
+      {
         std::ofstream fout("noname.json");
         stack_root.print_json(fout);
         return;
+      }
     }
 
     auto inv_stack_root = stack_root.invert();
